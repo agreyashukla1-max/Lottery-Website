@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lottery Website</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Hello User 👋</h1>
+
+        <p>Welcome to the Lottery Eligibility Checker</p>
+
+        <form method="POST">
+
+            <label for="lottery_number">
+                Enter your lottery number:
+            </label>
+
+            <input
+                type="number"
+                id="lottery_number"
+                name="lottery_number"
+                placeholder="Enter lottery number"
+                required
+            >
+
+            <button type="submit">
+                Check Lottery
+            </button>
+
+        </form>
+
+
+        {% if result %}
+
+        <div class="result">
+
+            <h2>{{ result.message }}</h2>
+
+            {% if result.eligible %}
+
+                <p>
+                    Your lottery category is:
+                </p>
+
+                <h3>{{ result.type }}</h3>
+
+            {% endif %}
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
